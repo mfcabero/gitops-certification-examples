@@ -1,0 +1,39 @@
+
+toggle fullscreen
+clock
+14m
+notes
+Use Kubeseal to encrypt secrets
+The Sealed Secrets controller is running now on the cluster and it is ready to decrypt secrets.
+
+We now need to encrypt our secrets and commit them to git. Encryption happens with the kubeseal executable. It needs to be installed in the same way as kubectl. It re-uses the cluster authentication already used by kubectl.
+
+We have already installed kubeseal for you in this exercise. You can use it right away to encrypt your plain Kubernetes secrets and convert them to encrypted secrets
+
+Run the following
+
+kubeseal < unsealed_secrets/db-creds.yml > sealed_secrets/db-creds-encrypted.yaml -o yaml
+kubeseal < unsealed_secrets/paypal-cert.yml > sealed_secrets/paypal-cert-encrypted.yaml -o yaml
+Now you have encrypted secrets. Open the files in the "Editor" tab and copy the contents in your clipboard.
+
+Then go the Github UI in another browser tab and commit/push their contents in your own fork of the application, filling the empty files at gitops-certification-examples/secret-app/manifests/db-creds-encrypted.yaml and gitops-certification-examples/secret-app/manifests/paypal-cert-encrypted.yaml
+
+Once you are ready to proceed, press Check.
+
+Skip
+
+
+
+123456789101112131415161718
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: paypal-cert
+      namespace: default
+    type: Opaque
+
+
+
+yaml
+This tab needs to be loaded in an external window.
+
